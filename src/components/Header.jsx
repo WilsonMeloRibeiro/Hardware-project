@@ -5,10 +5,10 @@ import { Link } from 'react-router-dom'
 function Header () {
 
     return(
-        <header>
+        <header className='header-nav-bar'>
             <img src={logo} alt="logo" />
-            <nav class="drop-menu">
-                <ul class="nav">
+            <nav className="drop-menu">
+                <ul className="nav">
                     <li><a onClick={()=> window.location.replace('http://localhost:5173')}>Home</a></li>
                     <li><a>Problemas</a>
                         <ul>

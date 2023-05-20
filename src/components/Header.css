@@ -1,14 +1,12 @@
-header{
-    background-color: #202020;
+.header-nav-bar{
     top: 0;
     position: absolute;
-    background-color: var(--bg-cards);
     align-items: center;
     height: 5vh;
     width: 100vw;
     display: flex;
     justify-content: space-between;
-    border-bottom: solid black 0.1rem;
+    background-color: #202020;
 }
 ul{
     padding: 0;
