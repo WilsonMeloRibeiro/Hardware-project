@@ -1,8 +1,9 @@
-const Express = require('express')
-const routes = Express.Router();
+const express = require('express');
+const  UserController = require('../controllers/UserController.cjs');
+const routes = express.Router();
 
-routes.get('/', (req, res)=>{
-    return res.json({ hello: 'world'})
-})
+routes.post('/', UserController.store);
+routes.get('/email', UserController.verifyEmail);
+routes.get('/password', UserController.verifyPassword);
 
 module.exports = routes;

@@ -3,5 +3,9 @@ module.exports = {
     host: 'localhost',
     username: 'root',
     password: '123456',
-    database: 'hardwareproject'
+    database: 'hardwareproject',
+    define: {
+        timestamps: true,
+        underscored: true,
+      },
 }
