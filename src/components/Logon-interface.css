@@ -11,6 +11,14 @@
     align-items: center;
     flex-direction: column;
 }
+.button-logon{
+    height: 6rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #202020;
+}
 .logon-input{
     padding-left: 2rem;
     border-style: none;
@@ -18,7 +26,7 @@
     font-size: 2rem;
     width: 50rem;
     height: 4rem;
-    margin-top: 5rem;
+    margin-top: 4.5rem;
     border-radius: 2.5rem;
 }
 input::placeholder{

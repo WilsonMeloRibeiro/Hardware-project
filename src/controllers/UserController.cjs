@@ -18,14 +18,14 @@ module.exports = {
             res.json("Email already registered");
         }
     },
-    async verifyPassword(req, res){
+    async verifyUser(req, res){
         const {email, password} = req.body;
-        const passwordVerified = await User.findOne({ where:{ email: email ,  password: password }})
+        const userVerified = await User.findOne({ where:{ email: email ,  password: password }})
         
-        if (passwordVerified ) {
-            res.json("Password is verified");
+        if (userVerified ) {
+            res.json("User verified");
         }else{
-            res.json("Passowrd is not verified");
+            res.json("User not verified");
         }
     }
 }

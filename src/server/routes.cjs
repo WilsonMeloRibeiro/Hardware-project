@@ -4,6 +4,6 @@ const routes = express.Router();
 
 routes.post('/', UserController.store);
 routes.get('/email', UserController.verifyEmail);
-routes.get('/password', UserController.verifyPassword);
+routes.post('/userVerify', UserController.verifyUser);
 
 module.exports = routes;
