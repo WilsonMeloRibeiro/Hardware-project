@@ -6,10 +6,12 @@ import axios from 'axios';
 
 function Logoninterface() {
     const url = "http://localhost:3000"
+    const urlVerifyer = "http://localhost:3000/email"
     const [name, setName] = useState('');
     const [password, setPassword] = useState('');
     const [passwordVerify, setPasswordVerify] = useState('');
     const [email, setEmail] = useState('');
+    var verifyResponse = 'a';
 
     function handleNameChange(newName){
         setName(newName)
@@ -24,7 +26,7 @@ function Logoninterface() {
         setPasswordVerify(newPasswordVerify)
     }
 
-    function verify(){
+    function verifyPassword(){
         if(password == passwordVerify){
             return true
         }else{
@@ -32,18 +34,47 @@ function Logoninterface() {
         }
     }
 
+    function emailVerify(){
+        if(verifyResponse == "Email does not exist"){
+            return true
+        }else{
+            return false
+        }
+    }
+
+    function emailResponse(){
+        const emailVerify = {
+            email: email
+        }
+        axios.post(urlVerifyer, emailVerify)
+        .then(response=>{
+            console.log("a")
+            verifyResponse = response.data;
+            send()
+        })
+        .catch(error=> console.error(error))
+    }
+
     function send(){
-        if(verify() == true){
-            const newUser = {
-                name: name,
-                password: password,
-                email: email
+        if(verifyPassword() == true){
+            console.log("b")
+            if(emailVerify() == true){
+                console.log("c")
+                console.log("verifyResponse")
+                var newUser = {
+                    name: name,
+                    password: password,
+                    email: email
+                }
+                axios.post(url, newUser)
+                .then(response=> console.log(response.data))
+                .catch(error=> console.error(error))
+            }else{
+                const emailVerifyField = document.querySelector("#email");
+                const text = document.querySelector('.text');
+                text.textContent = 'Email já está em uso';
+                emailVerifyField.style.border = " solid red";
             }
-            axios.post(url, newUser)
-            .then(response=>{
-                console.log(response.data)
-            })
-            .catch(error=> console.error(error))
         }else{
             const passwordVerifyField = document.querySelector("#password2");
             const text = document.querySelector('.text');
@@ -63,7 +94,7 @@ function Logoninterface() {
                 <p className='text'></p>
             </form>
             <div className='button-logon'>
-                <button className='button' onClick={send}>Enviar</button>
+                <button className='button' onClick={emailResponse}>Enviar</button>
             </div>
         </div>
     )

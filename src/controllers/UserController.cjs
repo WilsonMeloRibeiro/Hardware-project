@@ -16,6 +16,8 @@ module.exports = {
         
         if (emailExists ) {
             res.json("Email already registered");
+        }else{
+            res.json("Email does not exist");
         }
     },
     async verifyUser(req, res){
