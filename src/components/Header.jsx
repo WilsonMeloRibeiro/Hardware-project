@@ -2,7 +2,13 @@ import './Header.css'
 import logo from '../assets/fixLogo.png'
 import { Link } from 'react-router-dom'
 
-function Header () {
+
+function Header (props) {
+
+    const loggedIn = props.loggedIn
+    const loggedInUser = props.loggedInUser
+    
+
 
     return(
         <header className='header-nav-bar'>
@@ -17,10 +23,9 @@ function Header () {
                             <li><a>Monitor</a></li>
                         </ul>
                     </li>
-                    <li><a onClick={()=> window.location.replace('http://localhost:5173/logon')}>Registre-se</a></li>
-                    <li><a onClick={()=> window.location.replace('http://localhost:5173/login')}>Entre</a></li>
-                    <li><a>Perfil</a></li>
-                    <li><a>Sobre</a></li>
+                    {loggedIn ? '' :<li><a onClick={()=> window.location.replace('http://localhost:5173/logon')}>Registre-se</a></li> }
+                    {loggedIn ? '': <li><a onClick={()=> window.location.replace('http://localhost:5173/login')}>Entre</a></li>}
+                    {loggedIn && <li><a>{loggedInUser}</a></li>}
                 </ul>
             </nav>
         </header>

@@ -1,6 +1,6 @@
 import './Logon-interface.css'
 import '../index.css'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import axios from 'axios';
 
 
@@ -10,8 +10,11 @@ function Logoninterface() {
     const [name, setName] = useState('');
     const [password, setPassword] = useState('');
     const [passwordVerify, setPasswordVerify] = useState('');
-    const [email, setEmail] = useState('');
+    const [loggedInUser, setLoggedInUser] = useState('');
+    const [loggedIn, setLoggedIn] = useState(false);
     var verifyResponse = 'a';
+    
+    axios.defaults.withCredentials = true;
 
     function handleNameChange(newName){
         setName(newName)
@@ -25,6 +28,8 @@ function Logoninterface() {
     function handlePasswordVerifyChange(newPasswordVerify){
         setPasswordVerify(newPasswordVerify)
     }
+
+    
 
     function verifyPassword(){
         if(password == passwordVerify){
@@ -57,13 +62,10 @@ function Logoninterface() {
 
     function send(){
         if(verifyPassword() == true){
-            console.log("b")
             if(emailVerify() == true){
-                console.log("c")
-                console.log("verifyResponse")
                 var newUser = {
                     name: name,
-                    password: password,
+                    plainPassword: password,
                     email: email
                 }
                 axios.post(url, newUser)
@@ -89,13 +91,15 @@ function Logoninterface() {
             <h1>Registre-se</h1>
                 <input onChange={(e)=>handleNameChange(e.target.value)} className='logon-input' placeholder='Nome' type="text" name="name" id="name" />
                 <input onChange={(e)=>handleEmailChange(e.target.value)} className='logon-input' placeholder='Email' type="email" name="email" id="email" />
-                <input onChange={(e)=>handlePasswordChange(e.target.value)} className='logon-input' placeholder='Senha' type="password" name="password" id="password" />
+                <input onChange={(e)=>handlePasswordChange(e.target.value)} className='logon-input' placeholder='Senha' type="password" name="plainPassword" id="plainPassword" />
                 <input onChange={(e)=>handlePasswordVerifyChange(e.target.value)} className='logon-input' placeholder='Repita a senha' type="password" name="password2" id="password2" />
                 <p className='text'></p>
             </form>
             <div className='button-logon'>
                 <button className='button' onClick={emailResponse}>Enviar</button>
+            {loggedIn && <h1>{loggedInUser}</h1>}
             </div>
+
         </div>
     )
 }

@@ -8,6 +8,7 @@ function Logoninterface() {
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
     var verifyResponse = '';
+    axios.defaults.withCredentials = true;
 
     function handleEmailChange(newEmail){
         setEmail(newEmail)
