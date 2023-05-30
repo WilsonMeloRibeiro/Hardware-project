@@ -12,6 +12,7 @@ function Logoninterface() {
     const [passwordVerify, setPasswordVerify] = useState('');
     const [loggedInUser, setLoggedInUser] = useState('');
     const [loggedIn, setLoggedIn] = useState(false);
+    const [email, setEmail] = useState('');
     var verifyResponse = 'a';
     
     axios.defaults.withCredentials = true;

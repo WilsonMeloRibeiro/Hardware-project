@@ -16,16 +16,9 @@ function Header (props) {
             <nav className="drop-menu">
                 <ul className="nav">
                     <li><a onClick={()=> window.location.replace('http://localhost:5173')}>Home</a></li>
-                    <li><a>Problemas</a>
-                        <ul>
-                            <li><a>Mouse</a></li>
-                            <li><a>Teclado</a></li>
-                            <li><a>Monitor</a></li>
-                        </ul>
-                    </li>
                     {loggedIn ? '' :<li><a onClick={()=> window.location.replace('http://localhost:5173/logon')}>Registre-se</a></li> }
                     {loggedIn ? '': <li><a onClick={()=> window.location.replace('http://localhost:5173/login')}>Entre</a></li>}
-                    {loggedIn && <li><a>{loggedInUser}</a></li>}
+                    {loggedIn && <li><a onClick={()=> window.location.replace('http://localhost:5173/profile')}>{loggedInUser}</a></li>}
                 </ul>
             </nav>
         </header>
