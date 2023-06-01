@@ -72,6 +72,7 @@ function Logoninterface() {
                 axios.post(url, newUser)
                 .then(response=> console.log(response.data))
                 .catch(error=> console.error(error))
+                window.location.replace('http://localhost:5173')
             }else{
                 const emailVerifyField = document.querySelector("#email");
                 const text = document.querySelector('.text');

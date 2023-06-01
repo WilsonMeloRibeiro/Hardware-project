@@ -5,7 +5,7 @@
     border: 0;
     width: 40vw;
     height: 40vh;
-    background-color: #202020;
+    background-color: #212529;
 }
 .form-login{
     display: flex;
@@ -19,14 +19,14 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background-color: #202020;
+    background-color: #212529;
 }
 .login-input{
     padding-left: 2rem;
     border-style: none;
     position: relative;
     font-size: 2rem;
-    width: 50rem;
+    width: 70%;
     height: 4rem;
     margin-top: 5rem;
     border-radius: 2.5rem;

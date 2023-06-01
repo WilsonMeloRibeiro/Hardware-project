@@ -43,6 +43,7 @@ function Logoninterface() {
             emailField.style.border = " none";
             passwordField.style.border = " none";
             text.textContent = 'Você fez login :)';
+            window.location.replace('http://localhost:5173')
         }
         else{
             const passwordField = document.querySelector("#password");
